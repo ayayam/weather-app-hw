@@ -2,24 +2,68 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const cities = [
+    {
+      key: 1,
+      englishName: "Ann Arbor",
+      primaryPostalCode: 48103,
+      country: {
+        id: "US",
+        englishName: "United States of America"
+      },
+      administrativeArea: {
+        id: "MI",
+        englishName: "Michigan",
+        englishType: "State"
+      }
+    },
+    {
+      key: 2,
+      englishName: "Marietta",
+      primaryPostalCode: 30067,
+      country: {
+        id: "US",
+        englishName: "nited States of America"
+      },
+      administrativeArea: {
+        id: "GA",
+        englishName: "Georgia",
+        englishType: "State"
+      }
+    }
+  ]
+
+  const handleInputChange = (e) => {
+    console.log(e.target.value);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1></h1>
+      <label htmlFor='cityName'></label>
+      <input 
+        id='cityName' 
+        name='cityName'
+        type='text'
+        onChange={handleInputChange}
+      />
+      <hr />
+      <CityStat cities={cities}/>
     </div>
   );
+}
+
+// App.js should provide the array to the custom component as a props
+function CityStat(props) {
+  return (
+    props.cities.map(stat => (
+      <ul>
+        <li>English Name: {stat.englishName}</li>
+        <li>Administrative Area: {stat.administrativeArea.id}</li>
+        <li>Country: {stat.country.id}</li>
+      </ul>
+    ))
+  )
 }
 
 export default App;
