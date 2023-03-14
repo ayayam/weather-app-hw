@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="App">
       <h1></h1>
-      <label htmlFor='cityName'></label>
+      <label htmlFor='cityName'>City: </label>
       <input 
         id='cityName' 
         name='cityName'
@@ -58,9 +58,7 @@ function CityStat(props) {
   return (
     props.cities.map(stat => (
       <ul>
-        <li>English Name: {stat.englishName}</li>
-        <li>Administrative Area: {stat.administrativeArea.id}</li>
-        <li>Country: {stat.country.id}</li>
+        <li>{stat.englishName}, {stat.administrativeArea.id}, {stat.country.id}</li>
       </ul>
     ))
   )
